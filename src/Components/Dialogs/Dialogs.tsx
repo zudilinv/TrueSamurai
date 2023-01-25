@@ -1,22 +1,35 @@
 import React from "react";
-import s from './Dialogs.module.css';
-import {NavLink} from "react-router-dom";
+import s from "./Dialogs.module.css";
+import {DialogsItem} from "./DialogItem/DialogItem";
+import {Message} from "./Message/Message";
+import {DialogsType, MessagesType} from "../../Redax/state";
 
 
-export const Dialogs = () => {
+export type ElementType = {
+    dialogs: DialogsType[],
+    messages: MessagesType[],
+}
+export const Dialogs = (props: ElementType) => {
+
+    let dialogsElements = [
+        props.dialogs.map(dialog => (<DialogsItem name={dialog.name} id={dialog.id}/>))
+    ]
+    let dialogsMessages = [
+        props.messages.map(m => (<Message message={m.message}/>))
+    ]
+
+
     return (
         <div className={s.dialogs}>
             <div className={s.dialogsItems}>
-                <div className={s.dialog}><NavLink to="dialogs/1" activeClassName={s.active}>Dimych</NavLink></div>
-                <div className={s.dialog}><NavLink to="dialogs/2" activeClassName={s.active}>Andrey</NavLink></div>
-                <div className={s.dialog}><NavLink to="dialogs/3" activeClassName={s.active}>Sveta</NavLink></div>
-                <div className={s.dialog}><NavLink to="dialogs/4" activeClassName={s.active}>Anna</NavLink></div>
+
+                {dialogsElements}
+
             </div>
             <div className={s.messages}>
-                <div className={s.message + ' ' + s.active}>Hello</div>
-                <div className={s.message}>Hi</div>
-                <div className={s.message}>How are you</div>
-                <div className={s.message}>Yooo</div>
+
+                {dialogsMessages}
+
             </div>
         </div>
     )

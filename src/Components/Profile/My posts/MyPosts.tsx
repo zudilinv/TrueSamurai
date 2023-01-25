@@ -1,18 +1,35 @@
-import React from 'react';
-import s from './MyPosts.module.css';
+import React from "react";
+import s from "./MyPosts.module.css";
 import {Post} from "./Post/Post";
+import {PostsType} from "../../../Redax/state";
 
-export const MyPosts = () => {
+
+type MyPostsType = {
+    posts: PostsType[]
+}
+
+export const MyPosts = (props: MyPostsType) => {
+
+    const postsElements = [
+        props.posts.map(p => (<Post message={p.message} likesCount={p.likesCount}/>))
+    ]
+
     return (
-        <div> My posts
+        <div className={s.postsBlock}>
+            <h3>My posts</h3>
             <div>
-                <textarea></textarea>
-                <button>Add post</button>
-                <button>Remove</button>
+                <div>
+                    <textarea></textarea>
+                </div>
+                <div>
+                    <button>Add post</button>
+                    <button>Remove</button>
+                </div>
             </div>
             <div className={s.posts}>
-                <Post message='Hi, how are you?'/>
-                <Post message='It is my first post'/>
+
+                {postsElements}
+
             </div>
         </div>
     )

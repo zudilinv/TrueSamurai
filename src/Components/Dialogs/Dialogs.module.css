@@ -20,8 +20,14 @@
 
 .messages {
     padding: 10px;
+
 }
 
 .message.active {
     color: gold;
+}
+.imgAva {
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
 }

@@ -1,3 +1,6 @@
+.postsBlock {
+    padding: 10px;
+}
 .posts {
-    color: orange;
+    margin-top: 10px;
 }

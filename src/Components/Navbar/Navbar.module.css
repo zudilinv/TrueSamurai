@@ -11,3 +11,11 @@
 .item a.active {
     color: gold;
 }
+
+.item_item a {
+    color: white;
+    text-decoration: none;
+}
+.item_item a.active {
+    color: gold;
+}
