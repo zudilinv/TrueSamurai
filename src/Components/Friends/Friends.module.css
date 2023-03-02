@@ -1,0 +1,17 @@
+.item {
+    margin-top: 70px;
+    margin-left: 10px;
+    color: yellow;
+}
+.itemItem {
+    margin-top: 50px;
+    margin-left: 10px;
+    display:inline-flex;
+}
+.itemItemI {
+    width: 30px;
+    height: 30px;
+    margin-left: 10px;
+    background-color: yellow;
+    border-radius: 50%;
+}

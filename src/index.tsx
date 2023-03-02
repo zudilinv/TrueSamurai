@@ -1,14 +1,26 @@
 import React from "react";
-import ReactDOM from "react-dom";
 import "./index.css";
+import {store} from "./Redax/store";
+import ReactDOM from "react-dom";
 import App from "./App";
-import {state} from "./Redax/state";
 import {BrowserRouter} from "react-router-dom";
 
 
-ReactDOM.render(
-    <BrowserRouter>
-    <App state={state} />
-    </BrowserRouter>,
-    document.getElementById("root")
-);
+const rerenderEntireTree = () => {
+    ReactDOM.render(
+        <BrowserRouter>
+            <App store={store}/>
+        </BrowserRouter>,
+        document.getElementById("root")
+    );
+}
+
+store.subscriber(rerenderEntireTree)
+rerenderEntireTree();
+
+// store.subscriber(rerenderEntireTree);
+// state={store._state}
+// addPost={store.addPost}
+// updateNewPost={store.updateNewPost}
+// addMessage={store.addMessage}
+// updateNewMessage={store.updateNewMessage}
