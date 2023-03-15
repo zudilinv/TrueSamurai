@@ -1,96 +1,111 @@
-import {v1} from "uuid";
-import {addPostActionCreator, profileReducer, updateNewPostActionCreator} from "./profile-reducer";
-import {addMessageActionCreator, dialogsReducer, updateNewMessageActionCreator} from "./dialogs-reducer";
+ import {v1} from "uuid";
+// import {ProfilesPageType,
+//     profileReducer,
+//     addPostActionCreator,
+//     updateNewPostActionCreator} from "./profile-reducer";
+// import {
+//     DialogsPageType,
+//     dialogsReducer,
+//     addMessageActionCreator,
+//     updateNewMessageActionCreator
+// } from "./dialogs-reducer";
+// import {SideBarPageType,
+//     sideBarReducer} from "./sidebar-reducer";
+//
+// export type RootStateType = {
+//     profilesPage: ProfilesPageType,
+//     dialogsPage: DialogsPageType,
+//     sideBar: SideBarPageType
+//  }
+//
+//
+// export type StoreType = {
+//     _state: RootStateType,
+//     getState: () => RootStateType,
+//     _callSubscriber: () => void,
+//     subscriber: (observer: () => void) => void,
+//     dispatch: (action: ActionType) => void
+// }
 
-export type RootStateType = {
-    profilesPage: ProfilesPageType,
-    dialogsPage: DialogsPageType,
-    sideBar: SideBarPageType
-}
-export type DialogsPageType = {
-    dialogs: DialogsType[],
-    messages: MessagesType[],
-    newMessageText: string
-}
-export type ProfilesPageType = {
-    posts: PostsType[],
-    newPostText: string
-}
-export type DialogsType = {
-    id: string,
-    name: string
-}
-export type MessagesType = {
-    id: string,
-    message: string
+// export type ActionType = ReturnType<typeof addPostActionCreator> | ReturnType<typeof updateNewPostActionCreator>
+//                           | ReturnType<typeof addMessageActionCreator> | ReturnType<typeof updateNewMessageActionCreator>
 
-}
-export type PostsType = {
-    id: string,
-    message: string,
-    likesCount: number,
-}
-export type SideBarPageType = {}
+// export const store: StoreType = {
+//     _state: {
+//         dialogsPage: {
+//             dialogs: [
+//                 {id: v1(), name: "Dimych"},
+//                 {id: v1(), name: "Andrew"},
+//                 {id: v1(), name: "Sveta"},
+//                 {id: v1(), name: "Anna"},
+//             ],
+//             messages: [
+//                 {id: v1(), message: "Hello!"},
+//                 {id: v1(), message: "Hi!"},
+//                 {id: v1(), message: "How are you?"},
+//                 {id: v1(), message: "Yooo!!!"},
+//             ],
+//             newMessageText: "Samurai-way.com",
+//         },
+//
+//         profilesPage: {
+//             posts: [
+//                 {id: v1(), message: "Hi, how are you?", likesCount: 21},
+//                 {id: v1(), message: "It is my first post", likesCount: 12},
+//             ],
+//             newPostText: "It-kamasutra.com",
+//         },
+//
+//         sideBar: {},
+//     },
+//
+//     _callSubscriber() {
+//         console.log("State was changed")
+//     },
+//
+//     subscriber(observer) {
+//         this._callSubscriber = observer;
+//     },
+//
+//     getState() {
+//         return this._state
+//     },
+//      dispatch(action) {
+//          this._state.profilesPage = profileReducer(this._state.profilesPage, action)
+//          this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action)
+//          this._state.sideBar = sideBarReducer(this._state.sideBar, action)
+//
+//          this._callSubscriber()
+//      }
+// }
 
 
-export type StoreType = {
-    _state: RootStateType,
-    getState: () => RootStateType,
-    _callSubscriber: () => void,
-    subscriber: (observer: () => void) => void,
-    dispatch: (action: ActionType) => void
-}
-export type ActionType = ReturnType<typeof addPostActionCreator> | ReturnType<typeof updateNewPostActionCreator>
-                         | ReturnType<typeof addMessageActionCreator> | ReturnType<typeof updateNewMessageActionCreator>
 
-export const store: StoreType = {
-    _state: {
-        dialogsPage: {
-            dialogs: [
-                {id: v1(), name: "Dimych"},
-                {id: v1(), name: "Andrew"},
-                {id: v1(), name: "Sveta"},
-                {id: v1(), name: "Anna"},
-            ],
-            messages: [
-                {id: v1(), message: "Hello!"},
-                {id: v1(), message: "Hi!"},
-                {id: v1(), message: "How are you?"},
-                {id: v1(), message: "Yooo!!!"},
-            ],
-            newMessageText: "Samurai-way.com",
-        },
 
-        profilesPage: {
-            posts: [
-                {id: v1(), message: "Hi, how are you?", likesCount: 21},
-                {id: v1(), message: "It is my first post", likesCount: 12},
-            ],
-            newPostText: "It-kamasutra.com",
-        },
 
-        sideBar: {},
-    },
-
-    _callSubscriber() {
-        console.log("State was changed")
-    },
-
-    subscriber(observer) {
-        this._callSubscriber = observer;
-    },
-
-    getState() {
-        return this._state
-    },
-     dispatch(action) {
-         this._state.profilesPage = profileReducer(this._state.profilesPage, action)
-         this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action)
-         //this._state.sideBar = dialogsReducer(this._state.sideBar, action)
-
-         this._callSubscriber()
-     }
-}
+ // export type DialogsPageType = {
+ //     dialogs: DialogsType[],
+ //     messages: MessagesType[],
+ //     newMessageText: string
+ // }
+ // export type ProfilesPageType = {
+ //     posts: PostsType[],
+ //     newPostText: string
+ // }
+ // export type DialogsType = {
+ //     id: string,
+ //     name: string
+ // }
+ // export type MessagesType = {
+ //     id: string,
+ //     message: string
+ // }
+ // export type PostsType = {
+ //     id: string,
+ //     message: string,
+ //     likesCount: number,
+ // }
+ // export type SideBarPageType = {}
 
 
 // export type AddPostActionType = {
