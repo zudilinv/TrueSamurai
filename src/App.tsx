@@ -9,6 +9,7 @@ import {Settings} from "./Components/Settings/Settings";
 import {Route} from "react-router-dom"
 import {DialogsContainer} from "./Components/Dialogs/DialogsContainer";
 import {UsersContainer} from "./Components/Users/UsersContainer";
+import {UsersContainerC} from "./Components/Users/UsersContainerC";
 
 const App = () => {
     return (
@@ -22,6 +23,7 @@ const App = () => {
                 <Route path="/music" component={Music}/>
                 <Route path="/settings" component={Settings}/>
                 <Route path="/users" render={() => <UsersContainer/>}/>
+                <Route path="/usersC" render={() => <UsersContainerC/>}/>
             </div>
         </div>
     )
