@@ -1,35 +1,40 @@
-import React, {useEffect} from "react";
+import React from "react";
+import s from "./Users.module.css";
+import mafia from "../assecs/images/mafia.png";
 import {UsersType} from "../../Redux/users-reducer";
-import s from "./Users.module.css"
-import axios from "axios"
-import avatar from "../assecs/images/avatar.png"
 
 export type UsersPropsType = {
     users: UsersType[]
-    follow: (userId: string) => void
-    unFollow: (userId: string) => void
-    setUsers: (users: UsersType[]) => void
+    pageSize: number,
+    totalUsersCount: number,
+    currentPage: number,
+    follow: (userId: string) => void,
+    unFollow: (userId: string) => void,
+    onPageChanger: (pageNumber: number) => void
 }
+export const Users = (props: UsersPropsType) => {
 
+    let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize / 1000)
 
-export const Users: React.FC<UsersPropsType> = (props) => {
+    let pages = [];
+    for (let i = 1; i <= pagesCount; i++) {
+        pages.push(i)
+    }
 
-    useEffect(()=> {
-        if (props.users.length === 0) {
-            axios.get("https://social-network.samuraijs.com/api/1.0/users")
-                .then(response => {
-                    props.setUsers(response.data.items)
-                })
-        }
-    },[]);
-
-        return (
+    return (
+        <div>
             <div>
-                {
-                    props.users.map(u => <div key={u.id}>
+                {pages.map(page => {
+                    const selectClass = props.currentPage === page ? s.selectedPage : ""
+
+                    return  <span className={selectClass + ' ' + s.span}
+                                  onClick={(e)=>{props.onPageChanger(page)}}>{page}</span>
+                })}
+            </div>
+            {props.users.map(u => <div key={u.id}>
                     <span>
                         <div>
-                            <img className={s.img} src={u.photos.small ? u.photos.small : avatar}/>
+                            <img className={s.img} src={u.photos.small ? u.photos.small : mafia}/>
                         </div>
                         <div>
                             {u.followed ?
@@ -43,7 +48,7 @@ export const Users: React.FC<UsersPropsType> = (props) => {
                             }
                         </div>
                     </span>
-                        <span>
+                    <span>
                         <span>
                             <div>{u.name}</div>
                             <div>{u.status}</div>
@@ -53,8 +58,8 @@ export const Users: React.FC<UsersPropsType> = (props) => {
                             <div>{"u.location.city"}</div>
                         </span>
                     </span>
-                    </div>)
-                }
-            </div>
-        );
-}
+                </div>)}
+        </div>
+    );
+};
+

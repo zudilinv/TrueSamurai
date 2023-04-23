@@ -8,8 +8,8 @@ import {Music} from "./Components/Music/Music";
 import {Settings} from "./Components/Settings/Settings";
 import {Route} from "react-router-dom"
 import {DialogsContainer} from "./Components/Dialogs/DialogsContainer";
-import {UsersContainer} from "./Components/Users/UsersContainer";
-import {UsersContainerC} from "./Components/Users/UsersContainerC";
+import {UsersFunctionContainer} from "./Components/Users/UsersFunctionContainer";
+import {UsersContainerClass} from "./Components/Users/UsersContainerClass";
 
 const App = () => {
     return (
@@ -22,8 +22,8 @@ const App = () => {
                 <Route path="/news" component={News}/>
                 <Route path="/music" component={Music}/>
                 <Route path="/settings" component={Settings}/>
-                <Route path="/users" render={() => <UsersContainer/>}/>
-                <Route path="/usersC" render={() => <UsersContainerC/>}/>
+                <Route path="/users" render={() => <UsersFunctionContainer/>}/>
+                <Route path="/usersC" render={() => <UsersContainerClass/>}/>
             </div>
         </div>
     )
