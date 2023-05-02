@@ -8,3 +8,11 @@
     margin: 2px;
     border-radius: 50%;
   }
+.loginBlock {
+    float: right;
+}
+.loginBlock a {
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+}

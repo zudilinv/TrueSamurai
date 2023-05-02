@@ -1,7 +1,8 @@
 import React, {ChangeEvent} from "react";
 import {
-    addPostActionCreator, PostsType,
-    updateNewPostActionCreator
+    addPost,
+    PostsType,
+    updateNewPost
 } from "../../../Redux/profile-reducer";
 import {connect} from "react-redux";
 import {MyPosts} from "./MyPosts";
@@ -25,9 +26,9 @@ let mapStateToProps = (state: AppStateType): MapStatePropsType => {
 }
 let mapDispatchToProps = (dispatch: Dispatch): MapDispatchPropsType => {
     return {
-        addPost: () => dispatch(addPostActionCreator()),
+        addPost: () => dispatch(addPost()),
         onPostChange: (e: ChangeEvent<HTMLTextAreaElement>) =>
-            dispatch(updateNewPostActionCreator(e.currentTarget.value)),
+            dispatch(updateNewPost(e.currentTarget.value)),
     }
 }
 export const MyPostsContainer = connect(mapStateToProps, mapDispatchToProps)(MyPosts);

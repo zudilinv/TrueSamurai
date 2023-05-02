@@ -3,11 +3,11 @@ import {connect} from "react-redux";
 import {AppStateType} from "../../Redux/redux-store";
 import {Dispatch} from "redux";
 import {
-    FollowAC,
-    SetCurrentPageAC,
-    SetTotalUsersCountAC,
-    SetUsersAC,
-    UnFollowAC,
+    follow,
+    setCurrentPage, setIsFetching,
+    setTotalUsersCount,
+    setUsers,
+    unFollow,
     UsersType
 } from "../../Redux/users-reducer";
 import UsersAPIComponentClass from "./UsersAPIComponentClass";
@@ -17,6 +17,7 @@ type MapStatePropsTypeC = {
     currentPage: number,
     pageSize: number,
     totalUsersCount: number,
+    isFetching: boolean,
 }
 type MapDispatchPropsTypeC = {
     follow: (userId: string) => void
@@ -24,6 +25,7 @@ type MapDispatchPropsTypeC = {
     setUsers: (users: UsersType[]) => void
     setCurrentPage: (currentPage: number) => void
     setTotalUsersCount: (totalUsersCount: number) => void
+    setIsFetching: (isFetching: boolean)=> void
 }
 let mapStateToProps = (state: AppStateType): MapStatePropsTypeC => {
     return {
@@ -31,15 +33,17 @@ let mapStateToProps = (state: AppStateType): MapStatePropsTypeC => {
         pageSize: state.usersPage.pageSize,
         totalUsersCount: state.usersPage.totalUsersCount,
         currentPage: state.usersPage.currentPage,
+        isFetching: state.usersPage.isFetching,
     }
 }
 export let mapDispatchToProps = (dispatch: Dispatch): MapDispatchPropsTypeC => {
     return {
-        follow: (userId: string) => dispatch(FollowAC(userId)),
-        unFollow: (userId: string) => dispatch(UnFollowAC(userId)),
-        setUsers: (users: UsersType[]) => dispatch(SetUsersAC(users)),
-        setCurrentPage: (currentPage: number) => dispatch(SetCurrentPageAC(currentPage)),
-        setTotalUsersCount: (totalCount: number) => dispatch(SetTotalUsersCountAC(totalCount)),
+        follow: (userId: string) => dispatch(follow(userId)),
+        unFollow: (userId: string) => dispatch(unFollow(userId)),
+        setUsers: (users: UsersType[]) => dispatch(setUsers(users)),
+        setCurrentPage: (currentPage: number) => dispatch(setCurrentPage(currentPage)),
+        setTotalUsersCount: (totalCount: number) => dispatch(setTotalUsersCount(totalCount)),
+        setIsFetching: (isFetching: boolean) => dispatch(setIsFetching(isFetching))
     }
 }
 
